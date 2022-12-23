@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Тенденции</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
+    <link rel="icon" href="{{ url_for('static',filename='css/images/favicon.ico') }}">
+</head>
+<body>
+
+<div class="sub_body">
+    <div>
+        <form action="/hello">
+            <input type="submit" value="Назад"/>
+        </form>
+
+        <div class="title">Население по континентам по годам:</div>
+
+        <div class="text">Возьмем данные по странам, а именно, по 5 самым населённым странам на каждом материке.
+            Построим график изменения численности населения в этих странах по годам.
+            Страны на графиках не отмечены, важен цвет, которым нарисована линия,
+            значение цвета возможно найти в легенде
+        </div>
+
+        {% if image1 %}
+        <img src='data:image/png;base64,{{image1}}'/>
+        {% else %}
+        <div>Произошла ошибка</div>
+        {% endif %}
+
+        <div class="text">Выведем те же данные, но по самим континентам</div>
+
+        {% if image2 %}
+        <img src='data:image/png;base64,{{image2}}'/>
+        {% else %}
+        <div>Произошла ошибка</div>
+        {% endif %}
+    </div>
+</div>
+
+</body>
+</html>

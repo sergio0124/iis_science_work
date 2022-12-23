@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Регрессии</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
+    <link rel="icon" href="{{ url_for('static',filename='css/images/favicon.ico') }}">
+</head>
+<body>
+
+<div class="sub_body">
+
+    <form action="/hello">
+        <input type="submit" value="Назад"/>
+    </form>
+
+
+    <div class="choose_body" style="padding:30px; display:flex; justify-content: center;">
+
+        <div class="text">Построить зависисмость данных из</div>
+
+        <select name="first_column" id="regression_select_1">
+            <option value="2022 Population">2022 Population</option>
+            <option value="2020 Population">2020 Population</option>
+            <option value="2015 Population">2015 Population</option>
+            <option value="2010 Population">2010 Population</option>
+            <option value="2000 Population">2000 Population</option>
+            <option value="1990 Population">1990 Population</option>
+            <option value="1980 Population">1980 Population</option>
+            <option value="1970 Population">1970 Population</option>
+            <option value="Area (km²)">Area (km²)</option>
+            <option value="Density (per km²)">Density (per km²)</option>
+            <option value="Growth Rate">Growth Rate</option>
+            <option value="World Population Percentage">World Population Percentage</option>
+            <option value="GDP ($ per capita)">GDP ($ per capita)</option>
+            <option value="Literacy (%)">Literacy (%)</option>
+            <option value="Infant mortality (per 1000 births)">Infant mortality (per 1000 births)</option>
+        </select>
+
+        <div class="text"> от данных из</div>
+
+        <select name="second_column" id="regression_select_2">
+            <option value="2022 Population">2022 Population</option>
+            <option value="2020 Population">2020 Population</option>
+            <option value="2015 Population">2015 Population</option>
+            <option value="2010 Population">2010 Population</option>
+            <option value="2000 Population">2000 Population</option>
+            <option value="1990 Population">1990 Population</option>
+            <option value="1980 Population">1980 Population</option>
+            <option value="1970 Population">1970 Population</option>
+            <option value="Area (km²)">Area (km²)</option>
+            <option value="Density (per km²)">Density (per km²)</option>
+            <option value="Growth Rate">Growth Rate</option>
+            <option value="World Population Percentage">World Population Percentage</option>
+            <option value="GDP ($ per capita)">GDP ($ per capita)</option>
+            <option value="Literacy (%)">Literacy (%)</option>
+            <option value="Infant mortality (per 1000 births)">Infant mortality (per 1000 births)</option>
+        </select>
+
+        <input type="button" id="regression_submit" style="margin-left:20px" value="Построить с данными"/>
+    </div>
+
+
+    <div class="title">
+        Построим регрессии по данным выборки
+    </div>
+
+    <div class="text">
+        Построим линейную регрессию. Выбранные для регрессии статьи можно увидеть на осях.
+        Также в описании можно увидеть точность построенной модели.
+    </div>
+
+    <div class="text">
+        Для оценки модели используется метрика r2_score. Прочитать про неё можно
+        <a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.r2_score.html#sklearn.metrics.r2_score">
+            здесь</a>.
+    </div>
+
+    {% if image1 %}
+    <img src='data:image/png;base64,{{image1}}'/>
+    {% else %}
+    <div>Произошла ошибка</div>
+    {% endif %}
+
+    <div class="text">
+        Построим полиномиальную регрессию 5 степени.
+    </div>
+
+    {% if image2 %}
+    <img src='data:image/png;base64,{{image2}}'/>
+    {% else %}
+    <div>Произошла ошибка</div>
+    {% endif %}
+
+    <div class="text">
+        Построим гребневую полиномиальную регрессию 5 степени.
+    </div>
+
+    {% if image3 %}
+    <img src='data:image/png;base64,{{image3}}'/>
+    {% else %}
+    <div>Произошла ошибка</div>
+    {% endif %}
+
+</div>
+
+<script type="text/javascript" src="{{ url_for('static',filename='js/regression_submit.js') }}"></script>
+
+</body>
+</html>

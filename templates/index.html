@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Анализа данных</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
+    <link rel="icon" href="{{ url_for('static',filename='css/images/favicon.ico') }}">
+</head>
+<body>
+<div class="sub_body">
+    <div class="title">Данные для анализа</div>
+    <div class="text">В качестве данных для анализа мы взяли статистику популяции по всем странам мира. Для
+        построения графиков и проведения исследований к изначальным данным были присоединены данные,
+        описывающие экономическое состояние стран выборки. Данные для анализа были взяты на kaggle:
+    </div>
+
+    <div class="text">Данные популяции: <a
+            href="https://www.kaggle.com/datasets/iamsouravbanerjee/world-population-dataset">Kaggle</a>
+    </div>
+    <div class="text">Данные экономики: <a href="https://www.kaggle.com/datasets/fernandol/countries-of-the-world">Kaggle</a>
+    </div>
+
+    <form action="/dataset">
+        <input type="submit" class="text" value="Просмотреть данные"/>
+    </form>
+
+    <form action="/pop_tendencies">
+        <input type="submit" class="text" value="Построить графики по населению континентов во времени"/>
+    </form>
+
+
+    <input type="button" id="dendrogram_submit" class="text" value="Кластеризовать данные"/>
+
+    <form action="/regression">
+        <input type="submit" class="text" value="Построить регрессии по параметрам"/>
+    </form>
+
+</div>
+
+<script type="text/javascript" src="{{ url_for('static',filename='js/dendrogram_request.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static',filename='js/regression_submit.js') }}"></script>
+
+</body>
+</html>

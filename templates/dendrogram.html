@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dendrogram</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
+    <link rel="icon" href="{{ url_for('static',filename='css/images/favicon.ico') }}">
+</head>
+<body>
+
+<div class="sub_body">
+
+    <form action="/hello">
+        <input type="submit" value="Назад"/>
+    </form>
+
+    <div class="choose_body" style="padding:30px; display:flex; justify-content: center;">
+
+        <div class="text">Метод кластеризации: </div>
+
+        <select name="cluster_method" id="dendrogram_select">
+            <option value="single">single</option>
+            <option value="complete">complete</option>
+            <option value="weighted">weighted</option>
+            <option value="centroid">centroid</option>
+        </select>
+
+        <div class="text"> кол-во кластеров: </div>
+
+        <input type="number" id="dendrogram_number" min=1 max=15 value="4" name="number_clusters">
+
+        <input type="button" id="dendrogram_submit" style="margin-left:20px" value="Построить с данными"/>
+    </div>
+
+    <div class="title">
+        Выполним кластеризацию
+    </div>
+
+    <div class="text">
+        Кластеризацию будем выполнять по 2 полям: плотность населения и рост населения. Для выполнения кластеризации
+        используем дендрограмму. Дендрограмма имеет следующий вид:
+    </div>
+
+    {% if image1 %}
+    <img src='data:image/png;base64,{{image1}}'/>
+    {% else %}
+    <div>Произошла ошибка</div>
+    {% endif %}
+
+    <div class="text">
+        Представим получившиеся результаты в системе координат. Разные кластеры выделены разными цветами.
+        Итоговое отображение имеет следующий вид:
+    </div>
+
+    {% if image2 %}
+    <img src='data:image/png;base64,{{image2}}'/>
+    {% else %}
+    <div>Произошла ошибка</div>
+    {% endif %}
+
+    <div class="text">
+        Подробная разбивка по классам продемонстроирована ниже:
+    </div>
+
+    {% if clusters %}
+    {% for cluster in clusters %}
+    <div class="data">
+        {{cluster}}
+    </div>
+    {% endfor %}
+    {% else %}
+    <div>Произошла ошибка</div>
+    {% endif %}
+
+</div>
+
+
+<script type="text/javascript" src="{{ url_for('static',filename='js/dendrogram_request.js') }}"></script>
+
+</body>
+</html>

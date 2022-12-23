@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Данные</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
+    <link rel="icon" href="{{ url_for('static',filename='css/images/favicon.ico') }}">
+</head>
+<body>
+<div class="sub_body">
+    <form action="/hello">
+        <input type="submit" value="Назад"/>
+    </form>
+
+
+    <div class="table">
+        {% for table in tables %}
+        {{titles[loop.index]}}
+        {{ table|safe }}
+        {% endfor %}
+
+
+    </div>
+</div>
+
+</body>
+</html>
